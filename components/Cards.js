@@ -58,7 +58,7 @@ function cardMaker(obj) {
     cardAppend.appendChild(cardDiv)
     cardDiv.appendChild(headLine)
     cardDiv.appendChild(author)
-    cardDiv.appendChild(imgContainer)
+    author.appendChild(imgContainer)
     imgContainer.appendChild(img)
     author.appendChild(span)
 
