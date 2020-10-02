@@ -28,13 +28,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is the DOM?
 
+the Interface for HTML and CSS that represents the page
+
 2. What is an event?
+
+Events are "things" that can happen to HTML elements.  Javascript uses this to "react" to the events.
 
 3. What is an event listener?
 
+its what tells javascript to lookout for in terms of where the event is happening, what kind of event, and where the event is occuring
+
 4. Why would we convert a NodeList into an Array?
 
+so that we can utilize the different array methods to access or manipulate the data
+
 5. What is a component?
+
+independent and reusable bits of code that returns HTML via a render function.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
