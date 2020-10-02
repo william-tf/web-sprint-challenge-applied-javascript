@@ -26,10 +26,16 @@ cardAppend = document.querySelector('.cards-container')
 
 axios.get('https://lambda-times-api.herokuapp.com/articles')
 .then((res) => {
-    console.log(res)
-    return cardMaker(res.data.articles.bootstrap)
+    let articles = Object.values(res.data.articles)
+    articles.forEach((item) => {
+        item.forEach((cards) => {
+            cardAppend.appendChild(cardMaker(cards))
+        })
+    })
+
 })
 .catch((drama) => console.log(drama))
+
 
 
 
@@ -43,11 +49,11 @@ function cardMaker(obj) {
 
     cardDiv.classList.add('card')
     headLine.classList.add('headline')
-    headLine.textContent = obj
+    headLine.textContent = obj.headline
     author.classList.add('author')
     imgContainer.classList.add('img-container')
-    img.src = obj.articles
-    span.textContent = `By: ${obj.articles}`
+    img.src = obj.authorPhoto
+    span.textContent = `By: ${obj.authorName}`
     
     cardAppend.appendChild(cardDiv)
     cardDiv.appendChild(headLine)
@@ -57,7 +63,7 @@ function cardMaker(obj) {
     author.appendChild(span)
 
     cardDiv.addEventListener('click', () =>{
-    console.log(obj.articles.headline)
+    console.log(obj.headline)
 })
 
     return cardDiv
