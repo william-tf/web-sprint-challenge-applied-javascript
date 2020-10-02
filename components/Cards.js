@@ -21,21 +21,46 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-// axios.get('https://lambda-times-api.herokuapp.com/articles')
-// .then((res) => {
-
-// })
-// .catch((drama) => console.log(drama))
+cardAppend = document.querySelector('.cards-container')
 
 
-
-// function cardMaker(obj) {
-//     const cardDiv = document.createElement('div')
-//     const headLine = document.createElement('div')
-//     const author = document.createElement('div')
-//     const imgContainer = document.createElement('div')
-//     const img = 
+axios.get('https://lambda-times-api.herokuapp.com/articles')
+.then((res) => {
+    console.log(res)
+    return cardMaker(res.data.articles.bootstrap)
+})
+.catch((drama) => console.log(drama))
 
 
 
-// }
+function cardMaker(obj) {
+    const cardDiv = document.createElement('div')
+    const headLine = document.createElement('div')
+    const author = document.createElement('div')
+    const imgContainer = document.createElement('div')
+    const img = document.createElement('img')
+    const span = document.createElement('span')
+
+    cardDiv.classList.add('card')
+    headLine.classList.add('headline')
+    headLine.textContent = obj
+    author.classList.add('author')
+    imgContainer.classList.add('img-container')
+    img.src = obj.articles
+    span.textContent = `By: ${obj.articles}`
+    
+    cardAppend.appendChild(cardDiv)
+    cardDiv.appendChild(headLine)
+    cardDiv.appendChild(author)
+    cardDiv.appendChild(imgContainer)
+    imgContainer.appendChild(img)
+    author.appendChild(span)
+
+    cardDiv.addEventListener('click', () =>{
+    console.log(obj.articles.headline)
+})
+
+    return cardDiv
+
+}
+
